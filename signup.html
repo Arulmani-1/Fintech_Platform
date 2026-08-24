@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY | Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: #f6f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin: 0;
+            color: #333;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+            color: #fff;
+        }
+
+        span {
+            font-size: 12px;
+            color: #777;
+        }
+
+        a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+
+        button {
+            border-radius: 20px;
+            border: 1px solid #1fe0b6;
+            background-color: #1fe0b6;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+
+        .home-btn {
+            border-radius: 20px;
+            border: 1px solid #1fe0b6;
+            background-color: #1fe0b6;
+            color: #FFFFFF !important;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-btn:active {
+            transform: scale(0.95);
+        }
+
+        form {
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+
+        input, select {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            padding: 14px 16px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 12px;
+            color: #1e293b;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            background-color: #ffffff;
+            border-color: #1fe0b6;
+            box-shadow: 0 0 0 3px rgba(31, 224, 182, 0.15);
+        }
+
+        .container-auth {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            position: relative;
+            overflow: hidden;
+            width: 1000px;
+            max-width: 100%;
+            min-height: 700px;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .container-auth.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container-auth.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+
+        @keyframes show {
+            0%, 49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+            
+            50%, 100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .container-auth.right-panel-active .overlay-container{
+            transform: translateX(-100%);
+        }
+
+        .overlay {
+            background: #0ea98a;
+            background: -webkit-linear-gradient(to right, #1fe0b6, #0ea98a);
+            background: linear-gradient(to right, #1fe0b6, #0ea98a);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .container-auth.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+
+        .container-auth.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container-auth.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+
+        .social-container {
+            margin: 20px 0;
+        }
+
+        .social-container a {
+            border: 1px solid #DDDDDD;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+            color: #333;
+            transition: all 0.3s;
+        }
+        
+        .social-container a:hover {
+            border-color: #1fe0b6;
+            color: #1fe0b6;
+        }
+
+        @media (max-width: 768px) {
+            .container-auth {
+                min-height: 100vh;
+                border-radius: 0;
+            }
+            .overlay-container {
+                display: none;
+            }
+            .sign-in-container, .sign-up-container {
+                width: 100%;
+                left: 0;
+            }
+            .container-auth .sign-in-container {
+                transform: translateX(0) !important;
+                opacity: 1 !important;
+                z-index: 5 !important;
+                transition: opacity 0.3s;
+            }
+            .container-auth .sign-up-container {
+                transform: translateX(0) !important;
+                opacity: 0 !important;
+                z-index: 1 !important;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+            .container-auth.right-panel-active .sign-in-container {
+                opacity: 0 !important;
+                z-index: 1 !important;
+                pointer-events: none;
+            }
+            .container-auth.right-panel-active .sign-up-container {
+                opacity: 1 !important;
+                z-index: 5 !important;
+                pointer-events: auto;
+            }
+            .mobile-toggle-auth {
+                display: block !important;
+            }
+        }
+        .mobile-toggle-auth {
+            display: none;
+            margin-top: 15px;
+            color: #1fe0b6;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-auth right-panel-active" id="container">
+        <div class="form-container sign-up-container">
+            <form onsubmit="event.preventDefault(); localStorage.setItem('stacklyUserEmail', this.email.value); localStorage.setItem('stacklyUserName', this.name.value); window.location.href = 'login.html';">
+                <img src="assets/images/logo-green.webp" alt="Stackly Logo" style="width: 120px; margin-bottom: 15px;">
+                <h1>Create Account</h1>
+                <select name="role" required style="margin-top: 15px;">
+                    <option value="" disabled selected>Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <input type="text" name="name" placeholder="Name" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit">Sign Up</button>
+                <div class="mobile-toggle-auth" id="mobileSignIn">Already have an account? Sign In</div>
+                <div class="social-container" style="margin-top: 25px;">
+                    <a href="404.html" class="social"><i class="bi bi-facebook"></i></a>
+                    <a href="404.html" class="social"><i class="bi bi-google"></i></a>
+                    <a href="404.html" class="social"><i class="bi bi-linkedin"></i></a>
+                </div>
+                <span style="margin-bottom: 10px;">or use your email for registration</span>
+                <a href="home.html" class="home-btn">Go to Home</a>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form onsubmit="event.preventDefault(); window.location.href = this.role.value === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';">
+                <img src="assets/images/logo-green.webp" alt="Stackly Logo" style="width: 120px; margin-bottom: 15px;">
+                <h1>Sign in</h1>
+                <select name="role" required style="margin-top: 15px;">
+                    <option value="" disabled selected>Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <a href="404.html">Forgot your password?</a>
+                <button type="submit">Sign In</button>
+                <div class="mobile-toggle-auth" id="mobileSignUp">Don't have an account? Sign Up</div>
+                <div class="social-container" style="margin-top: 25px;">
+                    <a href="404.html" class="social"><i class="bi bi-facebook"></i></a>
+                    <a href="404.html" class="social"><i class="bi bi-google"></i></a>
+                    <a href="404.html" class="social"><i class="bi bi-linkedin"></i></a>
+                </div>
+                <span style="margin-bottom: 10px;">or use your account</span>
+                <a href="home.html" class="home-btn">Go to Home</a>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1 class="text-white">Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1 class="text-white">Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const mobileSignUpButton = document.getElementById('mobileSignUp');
+        const mobileSignInButton = document.getElementById('mobileSignIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+        
+        mobileSignUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        mobileSignInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+</body>
+</html>
+

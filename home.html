@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY | Home</title>
+    <meta name="description"
+        content="Powering smarter payments, seamless financial management, and intelligent digital experiences.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 100px;
+            padding-bottom: 80px;
+        }
+
+        .hero-visual {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            height: 100%;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: #1fe0b6;
+            box-shadow: 0 20px 40px rgba(31, 224, 182, 0.3);
+        }
+
+        .ref-timeline {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .ref-timeline-line {
+            position: absolute;
+            left: 0;
+            top: 25px;
+            bottom: 25px;
+            width: 2px;
+            background: #d8d8d8;
+            z-index: 1;
+        }
+
+        .ref-timeline-progress {
+            position: absolute;
+            left: 0;
+            top: 25px;
+            width: 2px;
+            background: #0ea98a;
+            z-index: 2;
+            height: 0%;
+        }
+
+        .ref-timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 35px;
+            z-index: 2;
+        }
+
+        .ref-timeline-item.mb-0 {
+            margin-bottom: 0;
+        }
+
+        .ref-timeline-circle {
+            position: absolute;
+            left: -65px; /* centers the 50px circle exactly on the 0px line */
+            top: 15px;
+            width: 50px;
+            height: 50px;
+            background: #dad3cc;
+            color: #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .ref-timeline-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            color: #1f1f1f;
+        }
+
+        .ref-timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 25px;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 12px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        /* Active State */
+        .ref-timeline-item.active .ref-timeline-circle {
+            background: #0ea98a;
+            color: #ffffff;
+        }
+
+        .ref-timeline-item.active .ref-timeline-card {
+            background: #0ea98a;
+            color: #ffffff;
+        }
+
+        .ref-timeline-item.active .ref-timeline-card p,
+        .ref-timeline-item.active .ref-timeline-card h5 {
+            color: #ffffff !important;
+        }
+
+        .ref-timeline-item.active .ref-timeline-card p {
+            opacity: 0.9;
+        }
+
+        .ref-timeline-item.active .ref-timeline-card::before {
+            border-right-color: #0ea98a;
+        }
+
+        .pricing-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            padding: 50px 40px;
+            transition: var(--transition-smooth);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card .btn-action {
+            margin-top: auto;
+            transition: var(--transition-smooth);
+        }
+
+        .pricing-card h4 {
+            transition: var(--transition-smooth);
+        }
+
+        .pricing-card:hover {
+            background: linear-gradient(180deg, rgba(31, 224, 182, 0.1) 0%, rgba(10, 15, 36, 0.1) 100%);
+            border-color: #1fe0b6;
+            box-shadow: 0 0 40px rgba(31, 224, 182, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .pricing-card:hover h4 {
+            color: #1fe0b6 !important;
+        }
+
+        .pricing-card:hover .btn-action {
+            background: #1fe0b6;
+            border-color: transparent;
+            color: #111622;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(31, 224, 182, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+<div class="main-wrapper" style="overflow-x: hidden; width: 100%; position: relative; max-width: 100%;">
+    <div id="preloader-placeholder"></div>
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- Background Blobs -->
+    <div class="bg-blob blob-1 parallax-layer-2"></div>
+    <div class="bg-blob blob-2 parallax-layer-1"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="fw-bold mb-4">Effortless Financial<br>Solutions for a<br><span
+                            class="text-gradient">Digital World</span></h1>
+                    <p class="mb-5 fs-5">Powering smarter payments, seamless financial management, and intelligent
+                        digital experiences for modern businesses.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="signup.html" class="btn-premium magnetic hover-lift">Get Started</a>
+                        <a href="404.html" class="btn-outline magnetic hover-lift">Explore Platform</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual image-reveal parallax-layer-3">
+                        <img src="assets/images/hero.webp" alt="STACKLY Fintech Dashboard"
+                            class="img-fluid rounded-4 shadow-lg hover-glow" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Logos Marquee -->
+    <section class="partner-logos mb-5" data-aos="fade-in">
+        <div class="logo-track">
+            <!-- First set -->
+            <div class="partner-logo"><i class="bi bi-bezier2"></i> SXSW</div>
+            <div class="partner-logo"><i class="bi bi-layers"></i> LAND-FX</div>
+            <div class="partner-logo"><i class="bi bi-box"></i> dentsu</div>
+            <div class="partner-logo"><i class="bi bi-hexagon"></i> algolia</div>
+            <div class="partner-logo"><i class="bi bi-circle-square"></i> FRAME</div>
+            <!-- Second set -->
+            <div class="partner-logo"><i class="bi bi-bezier2"></i> SXSW</div>
+            <div class="partner-logo"><i class="bi bi-layers"></i> LAND-FX</div>
+            <div class="partner-logo"><i class="bi bi-box"></i> dentsu</div>
+            <div class="partner-logo"><i class="bi bi-hexagon"></i> algolia</div>
+            <div class="partner-logo"><i class="bi bi-circle-square"></i> FRAME</div>
+            <!-- Third set -->
+            <div class="partner-logo"><i class="bi bi-bezier2"></i> SXSW</div>
+            <div class="partner-logo"><i class="bi bi-layers"></i> LAND-FX</div>
+            <div class="partner-logo"><i class="bi bi-box"></i> dentsu</div>
+            <div class="partner-logo"><i class="bi bi-hexagon"></i> algolia</div>
+            <div class="partner-logo"><i class="bi bi-circle-square"></i> FRAME</div>
+            <!-- Fourth set -->
+            <div class="partner-logo"><i class="bi bi-bezier2"></i> SXSW</div>
+            <div class="partner-logo"><i class="bi bi-layers"></i> LAND-FX</div>
+            <div class="partner-logo"><i class="bi bi-box"></i> dentsu</div>
+            <div class="partner-logo"><i class="bi bi-hexagon"></i> algolia</div>
+            <div class="partner-logo"><i class="bi bi-circle-square"></i> FRAME</div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section-padding bg-glass position-relative z-1 border-start-0 border-end-0">
+        <div class="container mt-5 pt-4">
+            <div class="row g-4 text-center">
+                <div class="col-md-3 col-6">
+                    <h2 class="fw-bold text-gradient mb-2"><span class="counter-value" data-target="99.9"
+                            data-suffix="%">0%</span></h2>
+                    <p class="mb-0 fw-medium">Transaction Success</p>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h2 class="fw-bold text-gradient mb-2"><span class="counter-value" data-target="12" data-prefix="$"
+                            data-suffix="B+">$0</span></h2>
+                    <p class="mb-0 fw-medium">Transactions Processed</p>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h2 class="fw-bold text-gradient mb-2"><span class="counter-value" data-target="85"
+                            data-suffix="%">0%</span></h2>
+                    <p class="mb-0 fw-medium">Financial Growth</p>
+                </div>
+                <div class="col-md-3 col-6">
+                    <h2 class="fw-bold text-gradient mb-2"><span class="counter-value" data-target="50"
+                            data-suffix="K+">0</span></h2>
+                    <p class="mb-0 fw-medium">Active Businesses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideas Into Your Project -->
+    <section class="section-padding overflow-hidden">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="image-reveal rounded-4 overflow-hidden border border-secondary shadow-lg">
+                        <img src="assets/images/ideas.webp" alt="Ideas Dashboard" class="img-fluid hover-glow"
+                            loading="lazy" decoding="async">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h2 class="fw-bold mb-4">Ideas Into Your Project</h2>
+                    <p class="fs-5 mb-5">We are happy to assist you all the time. Bring your concepts to life with our
+                        comprehensive fintech infrastructure.</p>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-bold">Web Design</span>
+                            <span class="fw-medium text-primary-violet">90%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-bold">Marketing</span>
+                            <span class="fw-medium text-primary-violet">75%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-width="75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-bold">Development</span>
+                            <span class="fw-medium text-primary-violet">85%</span>
+                        </div>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                <h2 class="fw-bold">Transforming Financial<br>Experiences</h2>
+            </div>
+            <div class="row g-4">
+                <!-- Service Cards -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bento-card hover-target">
+                        <i class="bi bi-credit-card fs-1 text-primary-violet mb-4 d-block icon-morph"></i>
+                        <h4 class="fw-bold">Digital Payments</h4>
+                        <p>Secure and fast payment infrastructure for modern businesses.</p>
+                        <a href="service.html"
+                            class="d-inline-flex align-items-center gap-2 mt-3 text-white fw-medium arrow-move">
+                            Learn more <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bento-card hover-target">
+                        <i class="bi bi-bar-chart-line fs-1 text-primary-violet mb-4 d-block icon-morph"></i>
+                        <h4 class="fw-bold">Financial Analytics</h4>
+                        <p>Real-time financial insights and intelligent reporting.</p>
+                        <a href="service.html"
+                            class="d-inline-flex align-items-center gap-2 mt-3 text-white fw-medium arrow-move">
+                            Learn more <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bento-card hover-target">
+                        <i class="bi bi-wallet2 fs-1 text-primary-violet mb-4 d-block icon-morph"></i>
+                        <h4 class="fw-bold">Wealth Management</h4>
+                        <p>Smarter tools for managing personal and business wealth.</p>
+                        <a href="service.html"
+                            class="d-inline-flex align-items-center gap-2 mt-3 text-white fw-medium arrow-move">
+                            Learn more <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Note -->
+    <section class="section-padding bg-glass position-relative border-start-0 border-end-0">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center text-lg-end" data-aos="fade-right">
+                    <img src="assets/images/founder.webp" alt="Founder" class="founder-circle shadow-lg" loading="lazy"
+                        decoding="async">
+                </div>
+                <div class="col-lg-7 text-center text-lg-start" data-aos="fade-left">
+                    <h2 class="fw-bold mb-3">We Bring The Best Things</h2>
+                    <p class="fs-5 mb-4">"We provide quality and effective services to ensure your financial operations
+                        scale securely and seamlessly."</p>
+                    <h5 class="fw-bold text-primary-violet mb-0">John Doe</h5>
+                    <p class="text-muted small">Founder — Fintech Studio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discover Features Section -->
+    <section class="section-padding" style="background-color: #fdf8f4; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                <h2 class="fw-bold text-dark" style="font-size: 2.5rem;">Discover powerful features for<br>financial success</h2>
+            </div>
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-11">
+                    <div class="bg-white rounded-4 shadow-sm" style="padding: 50px; overflow: visible;">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-6 position-relative pe-lg-4">
+                                <div class="image-reveal rounded-4 overflow-hidden" style="height: 100%;">
+                                    <img src="assets/images/team-analytics.webp" alt="Team Analytics" class="img-fluid w-100 object-fit-cover" style="min-height: 400px; border-radius: 20px;" loading="lazy" decoding="async">
+                                </div>
+                                <!-- Pie Chart Overlay Card -->
+                                <div class="position-absolute shadow-lg bg-white rounded-4 p-4" style="bottom: 30px; right: -30px; width: 250px; z-index: 10; border: 1px solid #f0f0f0; background: #fffaf0 !important;">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h6 class="fw-bold mb-1 text-dark" style="font-size: 0.95rem;">Email sent total</h6>
+                                            <small class="text-muted" style="font-size: 0.75rem;">March 2024</small>
+                                        </div>
+                                        <i class="bi bi-three-dots-vertical text-muted" style="color: #1fe0b6 !important;"></i>
+                                    </div>
+                                    <div class="position-relative mx-auto mb-4" style="width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(#0ea98a 0% 10%, #1fe0b6 10% 55%, #111622 55% 100%); display: flex; justify-content: center; align-items: center;">
+                                        <span class="position-absolute text-white fw-medium" style="font-size: 0.7rem; top: 25%; left: 35%;">10%</span>
+                                        <span class="position-absolute text-white fw-medium" style="font-size: 0.7rem; bottom: 25%; left: 25%;">45%</span>
+                                        <span class="position-absolute text-white fw-medium" style="font-size: 0.7rem; top: 45%; right: 20%;">45%</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-muted" style="font-size: 0.65rem;">
+                                        <span class="d-flex align-items-center gap-1"><i class="bi bi-circle-fill" style="color: #1fe0b6; font-size: 0.35rem;"></i> 860 send</span>
+                                        <span class="d-flex align-items-center gap-1"><i class="bi bi-circle-fill" style="color: #0ea98a; font-size: 0.35rem;"></i> 730 open</span>
+                                        <span class="d-flex align-items-center gap-1"><i class="bi bi-circle-fill" style="color: #111622; font-size: 0.35rem;"></i> 234 spam</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 ps-lg-5">
+                                <h3 class="fw-bold mb-3 text-dark" style="font-size: 1.8rem;">Real-time analytics</h3>
+                                <p class="text-secondary mb-5 fs-6">Gain actionable insights with our real-time<br>analytics feature.</p>
+                                
+                                <div class="row g-4 mb-5 mt-2">
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <i class="bi bi-pie-chart-fill fs-3" style="color: #111622;"></i>
+                                        </div>
+                                        <h6 class="fw-bold text-dark mb-2">Instant data updates</h6>
+                                        <p class="text-secondary small mb-0">Access the latest financial<br>data without any delays.</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <i class="bi bi-usb-symbol fs-3" style="color: #1fe0b6;"></i>
+                                        </div>
+                                        <h6 class="fw-bold text-dark mb-2">Interactive visualizations</h6>
+                                        <p class="text-secondary small mb-0">Use graphs and charts to<br>interpret data trends easily.</p>
+                                    </div>
+                                </div>
+                                
+                                <a href="404.html" class="fw-bold d-inline-flex align-items-center gap-2 text-decoration-none mt-2" style="color: #1fe0b6; font-size: 0.95rem; transition: 0.3s;">Get started now <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. Make Payment Easy Section -->
+    <section class="section-padding" style="background-color: #fbf8f4; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="rounded-4 position-relative p-5 d-flex align-items-center justify-content-center" style="background-color: #1a2c34; min-height: 500px; overflow: visible;">
+                        <!-- Main Image -->
+                        <img src="assets/images/make-payment.webp" alt="Make payment" class="img-fluid rounded-4 shadow-lg position-relative" style="z-index: 2; border: 4px solid #fff; max-height: 380px; object-fit: cover;" loading="lazy">
+                        
+                        <!-- Floating Card 1 -->
+                        <div class="position-absolute bg-white rounded-3 p-3 shadow-lg" style="top: 15%; left: -20px; z-index: 3; width: 220px; border: 1px solid #eee;">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <div class="bg-warning rounded text-white d-flex align-items-center justify-content-center" style="font-size: 0.6rem; width: 14px; height: 14px;"><i class="bi bi-check2"></i></div>
+                                <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.8rem;">Increased efficiency</h6>
+                            </div>
+                            <div class="progress rounded-pill bg-warning bg-opacity-25" style="height: 6px;">
+                                <div class="progress-bar bg-warning rounded-pill" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card 2 -->
+                        <div class="position-absolute bg-white rounded-3 p-3 shadow-lg" style="bottom: 25%; left: -10px; z-index: 3; width: 240px; border: 1px solid #eee;">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="bg-danger rounded text-white d-flex align-items-center justify-content-center" style="font-size: 0.6rem; width: 14px; height: 14px;"><i class="bi bi-check2"></i></div>
+                                    <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.8rem;">Cases resolved</h6>
+                                </div>
+                                <span class="badge bg-danger bg-opacity-25 text-danger border-0 rounded">100%</span>
+                            </div>
+                            <div class="progress rounded-pill bg-danger bg-opacity-25" style="height: 6px;">
+                                <div class="progress-bar bg-danger rounded-pill" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 offset-lg-1" data-aos="fade-left">
+                    <h2 class="fw-bold text-dark mb-5" style="font-size: 2.5rem; letter-spacing: -1px;">Make payment easy,<br>simplify your finance</h2>
+                    
+                    <div class="accordion accordion-flush feature-accordion" id="accordionFeatures">
+                        <div class="accordion-item border-0 bg-transparent mb-3 border-bottom pb-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent fw-bold text-dark px-0 shadow-none fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="bi bi-rocket-takeoff text-secondary me-3 fs-5"></i> Budgeting and expense tracking
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFeatures">
+                                <div class="accordion-body px-0 pt-2 text-secondary small">
+                                    Track every penny effortlessly and set limits to reach your financial goals faster.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 bg-transparent mb-3 border-bottom pb-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold text-dark px-0 shadow-none fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="bi bi-pie-chart text-secondary me-3 fs-5"></i> Investment management
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFeatures">
+                                <div class="accordion-body px-0 pt-2 text-secondary small">
+                                    Grow your wealth securely with intelligent portfolios tailored to your needs.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 bg-transparent mb-3 border-bottom pb-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold text-dark px-0 shadow-none fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="bi bi-currency-dollar text-secondary me-3 fs-5"></i> The digital transformation journey
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFeatures">
+                                <div class="accordion-body px-0 pt-2 text-secondary small">
+                                    Step into the future of digital finance with robust tools built for scaling.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 bg-transparent">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold text-dark px-0 shadow-none fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <i class="bi bi-server text-secondary me-3 fs-5"></i> Market expansion strategy
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFeatures">
+                                <div class="accordion-body px-0 pt-2 text-secondary small">
+                                    Go global instantly. Access international markets and multi-currency support.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Unlock Inspiration Section -->
+    <section class="section-padding" style="background-color: #fbf8f4; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 pe-lg-5" data-aos="fade-right">
+                    <h2 class="fw-bold text-dark mb-4 display-5" style="letter-spacing: -1.5px;">Unlock inspiration for<br>your business</h2>
+                    <p class="text-secondary mb-5">Discover a treasure trove of inspiration to fuel your business endeavors.</p>
+                    <a href="404.html" class="btn fw-bold px-4 py-3 rounded-pill text-white hover-lift text-decoration-none" style="background-color: #1a2c34; border: none; font-size: 1rem;">Learn more <i class="bi bi-arrow-right ms-2" style="font-size: 0.9em;"></i>
+                    </a>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="position-relative mt-5 mt-lg-0">
+                        <img src="assets/images/unlock-inspiration.webp" alt="Unlock Inspiration" class="img-fluid rounded-4 w-100 object-fit-cover shadow-sm" style="min-height: 400px;" loading="lazy">
+                        
+                        <!-- Floating Analytics Card -->
+                        <div class="position-absolute bg-white rounded-4 shadow-lg p-4" style="top: -30px; right: 10px; width: 340px; background-color: #fcf5ec !important; border: 1px solid #f0e6d2; z-index: 3;">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h6 class="fw-bold text-dark m-0 fs-6">Analytics</h6>
+                                <div class="d-flex align-items-center gap-3">
+                                    <span style="font-size: 0.6rem;" class="text-secondary fw-medium"><i class="bi bi-circle-fill text-dark me-1" style="font-size: 0.4rem;"></i> Income</span>
+                                    <span style="font-size: 0.6rem;" class="text-secondary fw-medium"><i class="bi bi-circle-fill text-warning me-1" style="font-size: 0.4rem;"></i> Outcome</span>
+                                    <span class="badge rounded-pill text-dark border border-secondary bg-transparent px-2 fw-medium" style="font-size: 0.6rem;">2024 <i class="bi bi-chevron-down ms-1"></i></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Fake Chart Area -->
+                            <div class="d-flex align-items-end justify-content-between position-relative" style="height: 120px; border-bottom: 1px solid #e0d8c9; padding-bottom: 5px; margin-left: 20px;">
+                                <!-- Y Axis -->
+                                <div class="position-absolute d-flex flex-column justify-content-between h-100 text-secondary fw-medium" style="left: -25px; top: 0; font-size: 0.5rem; text-align: right;">
+                                    <span>50k</span><span>40k</span><span>30k</span><span>20k</span><span>10k</span>
+                                </div>
+                                <!-- Tooltip -->
+                                <div class="position-absolute bg-warning text-white rounded p-2 shadow-sm" style="top: 15px; right: 60px; font-size: 0.55rem; z-index: 5;">
+                                    July 2024<br><strong class="fs-6">$58,456.9</strong>
+                                </div>
+                                <!-- Bars -->
+                                <div class="d-flex gap-1 align-items-end h-100"><div style="width: 5px; height: 30%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 50%; background: #0ea98a; border-radius: 2px;"></div></div>
+                                <div class="d-flex gap-1 align-items-end h-100"><div style="width: 5px; height: 60%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 40%; background: #0ea98a; border-radius: 2px;"></div></div>
+                                <div class="d-flex gap-1 align-items-end h-100"><div style="width: 5px; height: 40%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 70%; background: #0ea98a; border-radius: 2px;"></div></div>
+                                <div class="d-flex gap-1 align-items-end h-100"><div style="width: 5px; height: 80%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 60%; background: #0ea98a; border-radius: 2px;"></div></div>
+                                <div class="d-flex gap-1 align-items-end h-100 position-relative z-1"><div style="width: 5px; height: 90%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 100%; background: #0ea98a; border-radius: 2px; box-shadow: 0 0 10px rgba(255,183,3,0.6);"></div></div>
+                                <div class="d-flex gap-1 align-items-end h-100"><div style="width: 5px; height: 50%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 30%; background: #0ea98a; border-radius: 2px;"></div></div>
+                                <div class="d-flex gap-1 align-items-end h-100"><div style="width: 5px; height: 70%; background: #111622; border-radius: 2px;"></div><div style="width: 5px; height: 60%; background: #0ea98a; border-radius: 2px;"></div></div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2 text-secondary fw-medium ps-4 pe-1" style="font-size: 0.55rem;">
+                                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Steps & FAQ Section -->
+    <section class="section-padding" style="background-color: #fbf8f4; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="row align-items-center mb-5 pb-5 mt-2">
+                <!-- Image on Left Side -->
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="position-relative rounded-4 overflow-hidden shadow-lg border border-secondary border-opacity-10">
+                        <img src="assets/images/woman-card.webp" alt="Using finance app" class="img-fluid w-100" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Steps on Right Side -->
+                <div class="col-lg-6 px-lg-5" data-aos="fade-left">
+                    <div class="d-flex flex-column gap-5">
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="d-flex align-items-center justify-content-center bg-dark text-white rounded-circle fs-4 flex-shrink-0 shadow-sm" style="width: 60px; height: 60px;">1</div>
+                            <div class="mt-1">
+                                <h4 class="fw-bold text-dark mb-2">Download & register app</h4>
+                                <p class="text-secondary mb-0">Streamline your invoicing process and ensure timely payments.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="d-flex align-items-center justify-content-center bg-dark text-white rounded-circle fs-4 flex-shrink-0 shadow-sm" style="width: 60px; height: 60px;">2</div>
+                            <div class="mt-1">
+                                <h4 class="fw-bold text-dark mb-2">Monitor your cash flow easily</h4>
+                                <p class="text-secondary mb-0">Stay on top of your financial health by effortlessly tracking your cash.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="d-flex align-items-center justify-content-center bg-dark text-white rounded-circle fs-4 flex-shrink-0 shadow-sm" style="width: 60px; height: 60px;">3</div>
+                            <div class="mt-1">
+                                <h4 class="fw-bold text-dark mb-2">Pay all your bills with ease</h4>
+                                <p class="text-secondary mb-0">Easily manage and pay your bills hassle-free.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="row justify-content-center mt-5 pt-4" data-aos="fade-up">
+                <div class="col-lg-10">
+                    <h2 class="fw-bold text-dark text-center mb-5 pb-2" style="font-size: 2.5rem; letter-spacing: -1px;">Frequently asked questions</h2>
+                    
+                    <style>
+                        .custom-faq-accordion .accordion-button::after {
+                            background-image: none;
+                            content: "\F64D"; /* bi-plus icon */
+                            font-family: bootstrap-icons;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            color: #111622;
+                            transition: transform 0.2s;
+                        }
+                        .custom-faq-accordion .accordion-button:not(.collapsed)::after {
+                            content: "\F62A"; /* bi-x icon */
+                            transform: rotate(0);
+                        }
+                    </style>
+
+                    <div class="accordion custom-faq-accordion" id="accordionFAQ">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item border-0 bg-white shadow-sm mb-4 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-white text-dark fw-bold fs-5 shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                                    What payment options do you accept?
+                                </button>
+                            </h2>
+                            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body px-4 pb-4 pt-0 text-secondary">
+                                    Two before narrow not relied how except moment myself dejection assurance mrs led certainly so gate at no only none open betrayed at properly it of graceful on dinner abroad am depart.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item border-0 bg-white shadow-sm mb-4 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-white text-dark fw-bold fs-5 shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                                    What kind of support do you offer?
+                                </button>
+                            </h2>
+                            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body px-4 pb-4 pt-0 text-secondary">
+                                    We offer 24/7 dedicated support via chat, email, and phone to ensure your business operations never face a downtime.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item border-0 bg-white shadow-sm mb-4 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-white text-dark fw-bold fs-5 shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                                    Is my financial information secure with you?
+                                </button>
+                            </h2>
+                            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body px-4 pb-4 pt-0 text-secondary">
+                                    Absolutely. We employ bank-grade encryption protocols and strict compliance measures to ensure your data remains perfectly secure.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 4 -->
+                        <div class="accordion-item border-0 bg-white shadow-sm mb-5 rounded-4 overflow-hidden">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-white text-dark fw-bold fs-5 shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                                    How can I get started with FinBan service?
+                                </button>
+                            </h2>
+                            <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body px-4 pb-4 pt-0 text-secondary">
+                                    Simply click on the "Get Started" button, register your account, and our automated onboarding system will guide you through the process in minutes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="row mt-5 justify-content-center" data-aos="zoom-in">
+                <div class="col-lg-10">
+                    <div class="rounded-4 d-flex align-items-center p-5 position-relative shadow-lg" style="background-color: #0ea98a; min-height: 280px;">
+                        <h2 class="fw-bold text-white mb-0 display-4 position-relative z-3 ps-lg-4" style="max-width: 550px; line-height: 1.1; letter-spacing: -1.5px;">Join thousands of satisfied users!</h2>
+                        
+                        <!-- Pure CSS Credit Cards -->
+                        <div class="position-absolute z-1 d-none d-md-block" style="right: 80px; top: -10px;">
+                            <!-- Card 1 (Bottom/Left) -->
+                            <div class="rounded-4 shadow-lg position-absolute" style="width: 320px; height: 200px; background: linear-gradient(135deg, #11151a 0%, #1e2532 100%); transform: rotate(-15deg) translate(-100px, 120px); padding: 25px; border: 1px solid rgba(255,255,255,0.15); z-index: 1;">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <span class="text-white fw-bold" style="font-size: 0.9rem; letter-spacing: 1px;">Financer</span>
+                                    <div class="d-flex gap-1">
+                                        <div class="rounded-circle" style="width: 14px; height: 14px; background: rgba(255,255,255,0.8);"></div>
+                                        <div class="rounded-circle position-relative" style="width: 14px; height: 14px; background: rgba(255,255,255,0.8); left: -6px;"></div>
+                                    </div>
+                                </div>
+                                <div class="text-white fw-medium mb-3 mt-4 pt-2" style="font-size: 1.3rem; letter-spacing: 2.5px; font-family: monospace;">8763 2736 9873 0329</div>
+                                <div class="d-flex justify-content-between text-white-50 mt-4" style="font-size: 0.65rem;">
+                                    <div>
+                                        <div class="text-uppercase mb-1" style="font-size: 0.5rem; letter-spacing: 0.5px;">Card Holder Name</div>
+                                        <div class="text-white fw-bold text-uppercase" style="font-size: 0.75rem;">Hillery Nevelin</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-uppercase mb-1" style="font-size: 0.5rem; letter-spacing: 0.5px;">Expired Date</div>
+                                        <div class="text-white fw-bold" style="font-size: 0.75rem;">10/28</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 2 (Top/Right) -->
+                            <div class="rounded-4 shadow-lg position-absolute" style="width: 320px; height: 200px; background: linear-gradient(135deg, #162a34 0%, #203e4d 100%); transform: rotate(-15deg); padding: 25px; border: 1px solid rgba(255,255,255,0.15); z-index: 2;">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <span class="text-white fw-bold" style="font-size: 0.9rem; letter-spacing: 1px;">Financer</span>
+                                    <div class="d-flex gap-1">
+                                        <div class="rounded-circle" style="width: 14px; height: 14px; background: #0ea98a;"></div>
+                                        <div class="rounded-circle position-relative" style="width: 14px; height: 14px; background: rgba(255,255,255,0.5); left: -6px;"></div>
+                                    </div>
+                                </div>
+                                <div class="text-white fw-medium mb-3 mt-4 pt-2" style="font-size: 1.3rem; letter-spacing: 2.5px; font-family: monospace;">8763 2736 9873 0329</div>
+                                <div class="d-flex justify-content-between text-white-50 mt-4" style="font-size: 0.65rem;">
+                                    <div>
+                                        <div class="text-uppercase mb-1" style="font-size: 0.5rem; letter-spacing: 0.5px;">Card Holder Name</div>
+                                        <div class="text-white fw-bold text-uppercase" style="font-size: 0.75rem;">Hillery Nevelin</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-uppercase mb-1" style="font-size: 0.5rem; letter-spacing: 0.5px;">Expired Date</div>
+                                        <div class="text-white fw-bold" style="font-size: 0.75rem;">10/28</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bento Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row g-4 bento-grid">
+                <!-- Large Card -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="bento-card bg-glass d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="fw-bold mb-3">Real-Time Analytics</h3>
+                            <p class="mb-4">Make data-driven decisions instantly with our intelligent dashboard.</p>
+                        </div>
+                        <div class="mt-4 image-reveal rounded-4 overflow-hidden">
+                            <img src="assets/images/analytics.webp" alt="Analytics" class="img-fluid" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+                <!-- Small Stacked Cards -->
+                <div class="col-lg-6 d-flex flex-column gap-4">
+                    <div class="bento-card" data-aos="fade-left" data-aos-delay="100">
+                        <i class="bi bi-shield-check fs-2 text-primary-violet mb-3 d-block"></i>
+                        <h4 class="fw-bold">Advanced Security</h4>
+                        <p class="mb-2 fs-6">Military-grade encryption for every transaction.</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.9rem;">We employ end-to-end encryption, biometric multi-factor authentication, and continuous 24/7 AI threat monitoring to ensure your digital assets are always protected. Peace of mind comes standard.</p>
+                    </div>
+                    <div class="bento-card flex-grow-1" data-aos="fade-left" data-aos-delay="200">
+                        <i class="bi bi-globe fs-2 text-primary-violet mb-3 d-block"></i>
+                        <h4 class="fw-bold">Global Accessibility</h4>
+                        <p class="mb-2 fs-6">Transact in over 150+ currencies instantly without hidden fees.</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.9rem;">Access your funds from anywhere in the world. Our platform features localized support, real-time exchange rates, and completely seamless cross-border payments to help you expand your financial horizons globally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video CTA Banner -->
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="video-banner" data-aos="zoom-in">
+                <a href="404.html" class="play-btn mb-4"><i class="bi bi-play-fill"></i></a>
+                <h2 class="fw-bold display-5 mb-3">We Provide Outsourced<br>Services For Video</h2>
+                <p class="fs-5 mx-auto opacity-75" style="max-width: 600px;">Elevate your digital presence with our
+                    comprehensive creative and financial services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="section-padding position-relative overflow-hidden">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <div class="image-reveal rounded-4 overflow-hidden security-visual">
+                        <img src="assets/images/fintech-security.webp" alt="Security Shield"
+                            class="img-fluid hover-glow" loading="lazy" decoding="async">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up">
+                    <h2 class="fw-bold mb-4">Built With Security<br>At Every Layer</h2>
+                    <ul class="list-unstyled d-flex flex-column gap-4 mt-5">
+                        <li class="d-flex align-items-start gap-3">
+                            <div class="bg-glass p-3 rounded-circle"><i
+                                    class="bi bi-lock-fill text-primary-violet fs-5"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">End-to-End Encryption</h5>
+                                <p class="mb-0 fs-6">Your data is secured before it even leaves your device.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <div class="bg-glass p-3 rounded-circle"><i
+                                    class="bi bi-fingerprint text-primary-violet fs-5"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Multi-Factor Authentication</h5>
+                                <p class="mb-0 fs-6">Biometric support ensuring only you access your funds.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <div class="bg-glass p-3 rounded-circle"><i
+                                    class="bi bi-activity text-primary-violet fs-5"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Real-time Fraud Monitoring</h5>
+                                <p class="mb-0 fs-6">AI models analyze millions of data points to stop fraud instantly.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (Timeline) -->
+    <section class="section-padding overflow-hidden position-relative" style="background-color: #f3efe6;">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Left Column -->
+                <div class="col-lg-5 position-relative z-2" data-aos="fade-right">
+                    <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 mb-3 fw-bold">How it works?</span>
+                    <h2 class="fw-bold mb-3 display-5" style="letter-spacing: -1.5px; color: #1f1f1f;">Simple Steps to Success</h2>
+                    <p class="fw-medium text-secondary mb-4">It all starts with a single first step.</p>
+                    <p class="text-secondary small mb-5">Start your financial journey with STACKLY. We've simplified the entire process so you can start managing your money smarter, faster, and with complete confidence. Let our platform do the heavy lifting while you focus on what matters most.</p>
+                    
+                    <div class="bg-white rounded-4 shadow-lg p-5 text-center mt-4">
+                        <h3 class="fw-bold mb-3" style="font-size: 2rem;">Ready to start?</h3>
+                        <p class="text-secondary small mb-4 px-2">The tools you need will soon be at your fingertips. Take the first step towards better financial management today.</p>
+                        <a href="contact.html" class="btn btn-primary px-5 py-3 rounded-2 fw-bold w-100 mb-3" style="background-color: #0ea98a; border: none; letter-spacing: 0.5px;">LET'S TALK</a>
+                        <p class="small text-muted mb-0" style="font-size: 0.75rem;">All queries are replied within <u class="text-dark">24hrs</u>.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column (Timeline) -->
+                <div class="col-lg-6 offset-lg-1 position-relative z-2" id="ref-timeline-scroll" data-aos="fade-left">
+                    <div class="ref-timeline">
+                        <div class="ref-timeline-line"></div>
+                        <div class="ref-timeline-progress" id="ref-timeline-progress"></div>
+                        
+                        <!-- Item 1 (Active) -->
+                        <div class="ref-timeline-item active">
+                            <div class="ref-timeline-circle">1</div>
+                            <div class="ref-timeline-card">
+                                <h5 class="fw-bold mb-2">Sign Up</h5>
+                                <p class="small mb-0">Create a free STACKLY account in minutes using just your email.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="ref-timeline-item">
+                            <div class="ref-timeline-circle">2</div>
+                            <div class="ref-timeline-card">
+                                <h5 class="fw-bold mb-2">Link Accounts</h5>
+                                <p class="small mb-0">Securely connect your bank accounts and credit cards in one place.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="ref-timeline-item">
+                            <div class="ref-timeline-circle">3</div>
+                            <div class="ref-timeline-card">
+                                <h5 class="fw-bold mb-2">Analyze</h5>
+                                <p class="small mb-0">Our AI categorizes your spending to give you clear financial insights.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 4 -->
+                        <div class="ref-timeline-item">
+                            <div class="ref-timeline-circle">4</div>
+                            <div class="ref-timeline-card">
+                                <h5 class="fw-bold mb-2">Transact</h5>
+                                <p class="small mb-0">Pay bills, transfer funds, and manage invoices with zero friction.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="ref-timeline-item mb-0">
+                            <div class="ref-timeline-circle">5</div>
+                            <div class="ref-timeline-card">
+                                <h5 class="fw-bold mb-2">Optimize</h5>
+                                <p class="small mb-0">Use smart recommendations to save money and stretch your runway.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Portfolio Grid -->
+    <section class="section-padding bg-glass border-start-0 border-end-0">
+        <div class="container">
+            <div class="text-center mb-5 pb-4" data-aos="fade-up">
+                <h2 class="fw-bold">Take a Look Our Portfolio</h2>
+                <p>Digital Innovation Company That Creates Progress.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <a href="#" class="portfolio-card border border-secondary">
+                        <img src="assets/images/portfolio-1.webp" alt="Project 1" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay">
+                            <h5 class="fw-bold text-white mb-0">Mobile App UI</h5>
+                            <p class="text-success small fw-medium">Fintech Design</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#" class="portfolio-card border border-secondary">
+                        <img src="assets/images/analytics.webp" alt="Project 2" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay">
+                            <h5 class="fw-bold text-white mb-0">Analytics Dashboard</h5>
+                            <p class="text-success small fw-medium">Web Platform</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <a href="#" class="portfolio-card border border-secondary">
+                        <img src="assets/images/dashboard.webp" alt="Project 3" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay">
+                            <h5 class="fw-bold text-white mb-0">Banking Portal</h5>
+                            <p class="text-success small fw-medium">Enterprise</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#" class="portfolio-card border border-secondary">
+                        <img src="assets/images/banking.webp" alt="Project 4" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay">
+                            <h5 class="fw-bold text-white mb-0">Investment App</h5>
+                            <p class="text-success small fw-medium">Mobile App</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <a href="#" class="portfolio-card border border-secondary">
+                        <img src="assets/images/fintech-security.webp" alt="Project 5" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay">
+                            <h5 class="fw-bold text-white mb-0">Security Infrastructure</h5>
+                            <p class="text-success small fw-medium">System Architecture</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <a href="#" class="portfolio-card border border-secondary">
+                        <img src="assets/images/payment.webp" alt="Project 6" loading="lazy" decoding="async">
+                        <div class="portfolio-overlay">
+                            <h5 class="fw-bold text-white mb-0">Payment Gateway</h5>
+                            <p class="text-success small fw-medium">Financial API</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="404.html" class="btn-premium magnetic">Ask For Demonstration</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5 pb-4" data-aos="fade-up">
+                <h2 class="fw-bold">Simple, Transparent Pricing</h2>
+                <div class="d-inline-flex align-items-center gap-3 mt-4 bg-glass p-2 rounded-pill">
+                    <span class="px-3 fw-medium">Monthly</span>
+                    <div class="form-check form-switch m-0">
+                        <input class="form-check-input shadow-none fs-4 m-0" type="checkbox" role="switch"
+                            id="billingToggle" checked>
+                    </div>
+                    <span class="px-3 fw-medium text-primary-violet">Yearly</span>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-card text-center">
+                        <h4 class="fw-bold mb-3">Starter</h4>
+                        <h2 class="fw-bold mb-4 d-flex justify-content-center align-items-baseline">
+                            $<span class="price-val" data-monthly="15" data-yearly="150">150</span><span
+                                class="fs-6 text-muted fw-normal">/yr</span>
+                        </h2>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-5 text-start">
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Account management</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Standard analytics</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Secure transactions</li>
+                        </ul>
+                        <a href="404.html" class="btn-outline btn-action w-100 justify-content-center">Choose Plan</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-card text-center position-relative">
+                        <h4 class="fw-bold mb-3">Professional</h4>
+                        <h2 class="fw-bold mb-4 d-flex justify-content-center align-items-baseline">
+                            $<span class="price-val" data-monthly="30" data-yearly="300">300</span><span
+                                class="fs-6 text-muted fw-normal">/yr</span>
+                        </h2>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-5 text-start">
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Everything in Starter</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Advanced analytics</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Custom reports</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Priority support</li>
+                        </ul>
+                        <a href="404.html" class="btn-outline btn-action w-100 justify-content-center">Choose Plan</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-card text-center">
+                        <h4 class="fw-bold mb-3">Enterprise</h4>
+                        <h2 class="fw-bold mb-4 d-flex justify-content-center align-items-baseline">
+                            $<span class="price-val" data-monthly="50" data-yearly="500">500</span><span
+                                class="fs-6 text-muted fw-normal">/yr</span>
+                        </h2>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-5 text-start">
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Everything in Pro</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Dedicated account manager</li>
+                            <li><i class="bi bi-check2 text-primary-violet me-2"></i> Custom API access</li>
+                        </ul>
+                        <a href="contact.html" class="btn-outline btn-action w-100 justify-content-center">Contact
+                            Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rewards & Benefits Section -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Text Column -->
+                <div class="col-lg-5 pe-lg-5" data-aos="fade-right">
+                    <h2 class="fw-bold mb-4 text-dark" style="font-size: 2.8rem; line-height: 1.2; letter-spacing: -1px;">Rewards and benefits<br>with our diverse<br>credit card options</h2>
+                    <p class="text-secondary mb-5" style="font-size: 1.05rem; line-height: 1.6;">The most common inquiries surrounding our robust SaaS platform, are designed to provide clarity and insight into its functionality.</p>
+                    <a href="404.html" class="btn btn-dark text-white rounded-3 px-4 py-3 fw-medium d-inline-flex align-items-center gap-2" style="font-size: 0.95rem; background-color: #000;">Learn more <i class="bi bi-chevron-right" style="font-size: 0.75rem;"></i>
+                    </a>
+                </div>
+                
+                <!-- Image/Cards Column -->
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="rounded-4 p-5 position-relative d-flex justify-content-center align-items-center" style="background-color: #f5f5f5; min-height: 550px; overflow: hidden;">
+                        
+                        <!-- Back Card (Rotated Right) -->
+                        <div class="position-absolute shadow-lg" style="width: 380px; height: 240px; background: linear-gradient(135deg, #3a3a3a 0%, #222 100%); border-radius: 20px; transform: rotate(25deg) translate(40px, 80px); padding: 0;">
+                            <div style="width: 100%; height: 45px; background-color: #111; margin-top: 30px;"></div>
+                            <div class="d-flex justify-content-end px-4 mt-3">
+                                <div class="bg-white text-dark d-flex align-items-center px-2" style="height: 35px; width: 80%; font-family: monospace; font-size: 0.9rem; justify-content: flex-end;">0017</div>
+                            </div>
+                            <div class="px-4 mt-3">
+                                <div style="font-size: 0.35rem; color: rgba(255,255,255,0.3); line-height: 1.8; text-align: justify; letter-spacing: 0.5px;">
+                                    LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT, SED DIAM NONUMMY NIBH EUISMOD TINCIDUNT UT LAOREET DOLORE MAGNA ALIQUAM ERAT VOLUTPAT. UT WISI ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCI TATION ULLAMCORPER SUSCIPIT LOBORTIS NISL UT ALIQUIP EX EA COMMODO CONSEQUAT.
+                                </div>
+                            </div>
+                            <div class="position-absolute text-white-50" style="bottom: 25px; right: 30px; font-family: monospace; font-size: 0.9rem; letter-spacing: 2px;">CREDIT CARD</div>
+                        </div>
+
+                        <!-- Front Card (Rotated Left) -->
+                        <div class="position-absolute shadow-lg" style="width: 380px; height: 240px; background: linear-gradient(135deg, #4a4a4a 0%, #1f1f1f 100%); border-radius: 20px; transform: rotate(-15deg) translate(-20px, -40px); padding: 25px 30px; border: 1px solid rgba(255,255,255,0.05); z-index: 2; overflow: hidden;">
+                            <!-- Decorative SVG lines mimicking the card design in screenshot -->
+                            <svg class="position-absolute" style="top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; pointer-events: none;" viewBox="0 0 380 240">
+                                <path d="M-50,120 Q140,50 400,200" fill="none" stroke="#ffffff" stroke-width="1"></path>
+                                <path d="M-50,140 Q140,70 400,220" fill="none" stroke="#ffffff" stroke-width="1"></path>
+                                <path d="M-50,160 Q140,90 400,240" fill="none" stroke="#ffffff" stroke-width="1"></path>
+                                <path d="M-50,180 Q140,110 400,260" fill="none" stroke="#ffffff" stroke-width="1"></path>
+                            </svg>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4 position-relative z-1">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="bg-white rounded-1 d-flex flex-wrap align-items-center justify-content-center" style="width: 18px; height: 18px; padding: 2px; gap: 1px;">
+                                        <div style="width: 6px; height: 6px; background: #1f1f1f; border-radius: 1px;"></div>
+                                        <div style="width: 6px; height: 6px; background: #1f1f1f; border-radius: 1px;"></div>
+                                        <div style="width: 6px; height: 6px; background: #1f1f1f; border-radius: 1px;"></div>
+                                        <div style="width: 6px; height: 6px; background: #1f1f1f; border-radius: 1px;"></div>
+                                    </div>
+                                    <span class="text-white fw-bold" style="font-size: 0.95rem; letter-spacing: 0.5px;">Bankpro</span>
+                                </div>
+                                <span class="text-white-50" style="font-size: 0.75rem;">Sarah Thompson</span>
+                            </div>
+                            
+                            <!-- Chip -->
+                            <div class="mb-4 mt-2 position-relative z-1">
+                                <div style="width: 45px; height: 32px; background: #dcdcdc; border-radius: 6px; position: relative; overflow: hidden; border: 1px solid #aaa;">
+                                    <div style="position: absolute; top: 10px; left: 0; right: 0; height: 1px; background: #aaa;"></div>
+                                    <div style="position: absolute; top: 21px; left: 0; right: 0; height: 1px; background: #aaa;"></div>
+                                    <div style="position: absolute; top: 0; bottom: 0; left: 15px; width: 1px; background: #aaa;"></div>
+                                    <div style="position: absolute; top: 0; bottom: 0; left: 29px; width: 1px; background: #aaa;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end mb-1 position-relative z-1">
+                                <span class="text-white-50" style="font-size: 0.65rem; font-family: monospace; letter-spacing: 1px;">CREDIT CARD</span>
+                            </div>
+                            
+                            <div class="text-white fw-medium mb-2 position-relative z-1" style="font-size: 1.35rem; letter-spacing: 3px; font-family: monospace;">0000 00017 0061 005</div>
+                            
+                            <div class="text-white-50 position-relative z-1" style="font-size: 0.6rem; font-family: monospace; letter-spacing: 1px;">
+                                VALID FROM 02/03 &nbsp;&nbsp; VALID THRU 02/03
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding position-relative overflow-hidden text-center">
+        <div class="bg-blob blob-1"></div>
+        <div class="container position-relative z-1">
+            <h2 class="fw-bold display-5 mb-4">Ready to Take Control<br>of Your Finances?</h2>
+            <p class="fs-5 mb-5 mx-auto" style="max-width: 600px;">Build smarter financial experiences with STACKLY.
+                Join thousands of modern businesses today.</p>
+            <a href="404.html" class="btn-premium btn-lg fs-5 magnetic hover-lift">Get Started Today</a>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+        document.addEventListener('componentsLoaded', () => {
+            // Hero GSAP Animation
+            const tl = gsap.timeline();
+            tl.fromTo('.hero-content h1', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' })
+                .fromTo('.hero-content p', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, "-=0.6")
+                .fromTo('.hero-content .btn-premium, .hero-content .btn-outline', { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.5)' }, "-=0.4")
+                .fromTo('.hero-visual', { x: 120, opacity: 0, rotation: 5 }, { x: 0, opacity: 1, rotation: 0, duration: 1.2, ease: 'power3.out' }, "-=1");
+
+            // Timeline ScrollTrigger (Vertical Animation)
+            let items = gsap.utils.toArray('.ref-timeline-item');
+            gsap.fromTo('#ref-timeline-progress', 
+                { height: '0%' },
+                {
+                    height: '100%',
+                    scrollTrigger: {
+                        trigger: '#ref-timeline-scroll',
+                        start: 'top 80%',
+                        end: 'bottom 40%',
+                        scrub: 1,
+                        onUpdate: (self) => {
+                            let progress = self.progress;
+                            items.forEach((item, i) => {
+                                let itemProgress = i / (items.length - 1);
+                                if (progress >= itemProgress - 0.05) {
+                                    item.classList.add('active');
+                                } else {
+                                    item.classList.remove('active');
+                                }
+                            });
+                        }
+                    },
+                    ease: 'none'
+                }
+            );
+
+            // Dashboard Scroll Scale
+            gsap.fromTo('#dashboard-showcase img',
+                { scale: 0.9, y: 50 },
+                {
+                    scale: 1, y: 0,
+                    scrollTrigger: {
+                        trigger: '#dashboard-showcase',
+                        start: 'top 90%',
+                        end: 'bottom 50%',
+                        scrub: 1
+                    }
+                }
+            );
+
+            // Pricing Toggle
+            const toggle = document.getElementById('billingToggle');
+            const prices = document.querySelectorAll('.price-val');
+            const periods = document.querySelectorAll('.pricing-card .text-muted');
+
+            toggle.addEventListener('change', (e) => {
+                const isYearly = e.target.checked;
+                prices.forEach(p => {
+                    const target = isYearly ? p.getAttribute('data-yearly') : p.getAttribute('data-monthly');
+                    gsap.to(p, {
+                        innerHTML: target,
+                        duration: 0.5,
+                        snap: { innerHTML: 1 }
+                    });
+                });
+                periods.forEach(p => {
+                    p.innerText = isYearly ? '/yr' : '/mo';
+                });
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
+

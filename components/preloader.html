@@ -1,0 +1,71 @@
+<!-- Cinematic Preloader with Progress Bar -->
+<div class="preloader-container">
+    <div class="preloader-content text-center">
+        <!-- Full STACKLY Logo -->
+        <img src="assets/images/logo-green.webp" alt="STACKLY" class="loader-main-logo mb-4">
+        
+        <!-- Progress Bar and Text -->
+        <div class="preloader-progress-wrapper mx-auto">
+            <div class="preloader-progress-bg">
+                <div class="preloader-progress-fill"></div>
+            </div>
+            <div class="preloader-percentage-container">
+                <div class="preloader-percentage fw-bold text-white-50">0%</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.preloader-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a0f18; /* Very dark background */
+    pointer-events: none;
+}
+
+.loader-main-logo {
+    width: 250px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.preloader-progress-wrapper {
+    width: 220px;
+    position: relative;
+}
+
+.preloader-progress-bg {
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.preloader-progress-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 0%;
+    background-color: #e83e8c; /* Match the pinkish line from the image */
+    border-radius: 2px;
+}
+
+.preloader-percentage-container {
+    position: absolute;
+    top: 15px;
+    left: 0%;
+    transform: translateX(-50%);
+}
+
+.preloader-percentage {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #a0a0a0 !important;
+}
+</style>

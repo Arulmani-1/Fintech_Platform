@@ -1,0 +1,87 @@
+/* Premium Micro-Animations and Keyframes */
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.05); }
+    100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes float-subtle {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(31, 224, 182, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(31, 224, 182, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(31, 224, 182, 0); }
+}
+
+@keyframes scan-line {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Hover effects */
+.hover-lift {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(31, 224, 182, 0.3);
+    border-color: rgba(31, 224, 182, 0.5);
+}
+
+.icon-morph {
+    transition: transform 0.4s ease;
+}
+.hover-target:hover .icon-morph {
+    transform: scale(1.15) rotate(10deg);
+}
+
+.arrow-move {
+    transition: transform 0.3s ease;
+}
+.hover-target:hover .arrow-move {
+    transform: translateX(5px);
+}
+
+.image-mask-reveal {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+/* Magnetic effect helper */
+.magnetic {
+    transition: transform 0.1s linear;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-play {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.play-btn {
+    /* Continuous pulse animation removed, relies on hover now */
+}

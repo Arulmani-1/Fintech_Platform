@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY | Blog</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .inner-hero {
+            padding-top: 150px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #1fe0b6;
+            color: #111622;
+            border-color: #1fe0b6;
+        }
+        .blog-card {
+            background: var(--pure-white);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 100%;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--glass-shadow);
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: #1fe0b6;
+            box-shadow: 0 10px 20px rgba(31, 224, 182, 0.2);
+        }
+        .blog-card-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        .blog-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .blog-card:hover .blog-card-img img {
+            transform: scale(1.1);
+        }
+        .blog-card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .blog-item {
+            transition: all 0.4s ease;
+        }
+        .blog-hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div id="preloader-placeholder"></div>
+
+    <div id="navbar-placeholder"></div>
+    
+    <main class="flex-grow-1 position-relative overflow-hidden">
+        <div class="bg-blob blob-3"></div>
+        <section class="inner-hero">
+        <div class="container" data-aos="fade-up">
+            <h1 class="fw-bold mb-3">Stay Updated on<br><span class="text-gradient">Digital Payments</span></h1>
+            <p class="fs-5 mx-auto" style="max-width: 600px;">Insights, news, and tips from the forefront of financial technology.</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="section-padding pt-0">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-5 pb-3" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All Articles</button>
+                <button class="filter-btn" data-filter="mobile">Mobile app</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="row g-5 mb-5" id="blog-grid">
+                
+                <div class="col-lg-4 col-md-6 blog-item" data-category="mobile">
+                    <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                        <div class="rounded-4 overflow-hidden mb-3">
+                            <img src="assets/images/blog-new-1.webp" alt="Investment strategies" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Mobile app</span>
+                            <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                        </div>
+                        <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Investment strategies for building wealth in any market</h5>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 col-md-6 blog-item" data-category="business">
+                    <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                        <div class="rounded-4 overflow-hidden mb-3">
+                            <img src="assets/images/blog-new-2.webp" alt="Strategies for achieving balance" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Business</span>
+                            <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                        </div>
+                        <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Strategies for achieving balance and security in life</h5>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 col-md-6 blog-item" data-category="design">
+                    <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                        <div class="rounded-4 overflow-hidden mb-3">
+                            <img src="assets/images/blog-new-3.webp" alt="Practical tips for growing savings" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Design</span>
+                            <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                        </div>
+                        <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Practical tips for growing your savings account</h5>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 col-md-6 blog-item" data-category="mobile">
+                    <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                        <div class="rounded-4 overflow-hidden mb-3">
+                            <img src="assets/images/blog-new-4.webp" alt="Healthy credit score" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Mobile app</span>
+                            <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                        </div>
+                        <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">How to build and maintain a healthy credit score</h5>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 col-md-6 blog-item" data-category="design">
+                    <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                        <div class="rounded-4 overflow-hidden mb-3">
+                            <img src="assets/images/blog-new-5.webp" alt="Understanding basics" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Design</span>
+                            <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                        </div>
+                        <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Understanding the basics and building blocks</h5>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 col-md-6 blog-item" data-category="business">
+                    <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                        <div class="rounded-4 overflow-hidden mb-3">
+                            <img src="assets/images/blog-new-6.webp" alt="Financial reputation" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Business</span>
+                            <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                        </div>
+                        <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Building and maintaining your financial reputation</h5>
+                    </article>
+                </div>
+                
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center align-items-center mt-5 gap-4">
+                <span class="text-muted fw-bold">1 / 2</span>
+                <a href="404.html" class="btn text-white rounded-pill px-5 py-2 fw-bold" style="background-color: #032d36; border: none; font-size: 0.95rem;">Next &rsaquo;</a>
+            </div>
+        </div>
+    </section>
+        <!-- Client Reviews Section -->
+        <section class="section-padding position-relative" style="background: linear-gradient(to bottom, #fdf9f1 50%, #b3ece5 50%); padding-top: 100px; padding-bottom: 100px;">
+            <div class="container text-center mb-5 pb-3">
+                <h2 class="fw-bold mb-3" style="color: #032d36; font-size: 3rem;">Client Reviews</h2>
+                <p class="mx-auto" style="max-width: 700px; color: #56737b;">Dive into the experiences of our valued clients through their insightful reviews. Explore firsthand accounts of satisfaction, success, and trust in our services.</p>
+            </div>
+            
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Column 1 -->
+                    <div class="col-lg-4 col-md-6 d-flex flex-column gap-4">
+                        <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 380px;">
+                            <img src="assets/images/review_video_1.webp" class="w-100 h-100 object-fit-cover" alt="Client Review Video">
+                            <div class="position-absolute bottom-0 end-0 p-3 m-1">
+                                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 50px; height: 50px; cursor: pointer;" onclick="window.location.href='404.html'">
+                                    <i class="bi bi-play-fill text-dark fs-4 ms-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-4 p-4 shadow-sm d-flex flex-column flex-grow-1" style="background-color: #dcf965; min-height: 280px;">
+                            <p class="fw-medium text-dark mb-4" style="font-size: 0.95rem; line-height: 1.6; color: #173d42 !important;">Our customer reviews provide valuable insights into the experiences of those who have used our products or services.</p>
+                            <h6 class="fw-bold mt-auto mb-3" style="color: #173d42;">Samuel Bishop</h6>
+                            <div class="rounded-3 overflow-hidden mt-1">
+                                <img src="assets/images/review_video_1.webp" class="w-100 object-fit-cover" style="height: 120px; object-position: top;" alt="Samuel Bishop Project">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="col-lg-4 col-md-6 d-flex flex-column gap-4">
+                        <div class="rounded-4 p-4 shadow-sm text-white d-flex flex-column" style="background-color: #032d36; height: 320px;">
+                            <div class="d-flex mb-4 fs-6" style="color: #dcf965;">
+                                <i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-half"></i>
+                            </div>
+                            <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mt-2" style="width: 32px; height: 32px;">
+                                <i class="bi bi-quote fs-5" style="color: #032d36;"></i>
+                            </div>
+                            <p class="mb-4" style="font-size: 0.9rem; line-height: 1.6; color: #a4b6bc;">I've tried numerous finance apps, but none compare to this one. It's user-friendly, intuitive, and has truly transformed how I manage my finances. Highly recommended!</p>
+                            <div class="d-flex align-items-center gap-3 mt-auto">
+                                <img src="assets/images/review_avatar_1.webp" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;" alt="Frances">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Frances guerrero</h6>
+                                    <small style="color: #8da4aa; font-size: 0.8rem;">Customer service</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-relative rounded-4 overflow-hidden shadow-sm flex-grow-1" style="min-height: 340px;">
+                            <img src="assets/images/review_video_2.webp" class="w-100 h-100 object-fit-cover" alt="Client Review Video">
+                            <div class="position-absolute bottom-0 end-0 p-3 m-1">
+                                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 50px; height: 50px; cursor: pointer;" onclick="window.location.href='404.html'">
+                                    <i class="bi bi-play-fill text-dark fs-4 ms-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="col-lg-4 col-md-12 d-flex flex-column gap-4">
+                        <div class="rounded-4 p-4 shadow-sm d-flex flex-column" style="background-color: #dcf965; height: 340px;">
+                            <p class="fw-medium text-dark mb-4" style="font-size: 0.95rem; line-height: 1.6; color: #173d42 !important;">"The team at Fynas provided exceptional service. Their expertise helped me navigate the complexities of social payments effortlessly. Highly recommend!"</p>
+                            <h6 class="fw-bold mt-auto mb-3" style="color: #173d42;">Louis ferguson</h6>
+                            <div class="rounded-4 overflow-hidden mt-1">
+                                <img src="assets/images/review_video_2.webp" class="w-100 object-fit-cover" style="height: 140px; object-position: center;" alt="Louis Project">
+                            </div>
+                        </div>
+                        <div class="rounded-4 p-4 shadow-sm text-white d-flex flex-column flex-grow-1" style="background-color: #032d36; min-height: 320px;">
+                            <div class="d-flex mb-4 fs-6" style="color: #dcf965;">
+                                <i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i class="bi bi-star-half"></i>
+                            </div>
+                            <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mt-1" style="width: 32px; height: 32px;">
+                                <i class="bi bi-quote fs-5" style="color: #032d36;"></i>
+                            </div>
+                            <p class="mb-4" style="font-size: 0.9rem; line-height: 1.6; color: #a4b6bc;">Explore a diverse range of perspectives and opinions from our satisfied customers, offering transparency and trust in our offerings.</p>
+                            <div class="d-flex align-items-center gap-3 mt-auto">
+                                <img src="assets/images/review_avatar_2.webp" class="rounded-circle" style="width: 45px; height: 45px; object-fit: cover;" alt="Larry">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Larry lawson</h6>
+                                    <small style="color: #8da4aa; font-size: 0.8rem;">Content writer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 pt-3">
+                    <p class="text-dark fw-medium mb-3" style="font-size: 0.95rem;">Share your experience with us by clicking the below button!</p>
+                    <a href="404.html" class="btn rounded-pill px-4 py-2 text-white fw-medium shadow-sm" style="background-color: #032d36; font-size: 0.9rem;">Submit a review</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent blog section -->
+        <section class="section-padding" style="background-color: #fdf9f1; padding-top: 100px; padding-bottom: 120px;">
+            <div class="container text-center mb-5 pb-3">
+                <h2 class="fw-bold" style="color: #032d36; font-size: 3rem;">Recent blog</h2>
+            </div>
+            
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-4 col-md-6">
+                        <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                            <div class="rounded-4 overflow-hidden mb-3">
+                                <img src="assets/images/blog-new-2.webp" alt="Strategies for achieving balance" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Business</span>
+                                <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                            </div>
+                            <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Strategies for achieving balance and security in life</h5>
+                        </article>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                            <div class="rounded-4 overflow-hidden mb-3">
+                                <img src="assets/images/blog-new-3.webp" alt="Practical tips for growing savings" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Design</span>
+                                <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                            </div>
+                            <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">Practical tips for growing your savings account</h5>
+                        </article>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <article class="border-0 shadow-none bg-transparent h-100 d-flex flex-column">
+                            <div class="rounded-4 overflow-hidden mb-3">
+                                <img src="assets/images/blog-new-4.webp" alt="Healthy credit score" class="w-100 object-fit-cover" style="aspect-ratio: 3/2; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge rounded-pill text-dark px-3 py-2 fw-medium" style="background-color: #eef2f5;">Mobile app</span>
+                                <span class="text-muted fw-medium" style="font-size: 0.85rem;">Jan 24, 2024</span>
+                            </div>
+                            <h5 class="fw-bold" style="color: #173d42; line-height: 1.4;">How to build and maintain a healthy credit score</h5>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder" class="mt-auto"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const blogItems = document.querySelectorAll('.blog-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Active state
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    // Filter animation using GSAP
+                    gsap.to(blogItems, {
+                        opacity: 0,
+                        scale: 0.9,
+                        duration: 0.3,
+                        onComplete: () => {
+                            blogItems.forEach(item => {
+                                if(filter === 'all' || item.getAttribute('data-category') === filter) {
+                                    item.classList.remove('blog-hidden');
+                                    gsap.to(item, {opacity: 1, scale: 1, duration: 0.4});
+                                } else {
+                                    item.classList.add('blog-hidden');
+                                }
+                            });
+                            ScrollTrigger.refresh();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

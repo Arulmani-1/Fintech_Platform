@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY | Contact</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .inner-hero {
+            padding-top: 150px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        .form-control {
+            background: rgba(0,0,0,0.02);
+            border: 1px solid var(--glass-border);
+            color: #111;
+            padding: 15px 20px;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+        .form-control:focus {
+            background: rgba(0,0,0,0.05);
+            border-color: var(--primary-violet);
+            box-shadow: 0 0 0 4px rgba(31, 224, 182, 0.15);
+            color: #111;
+        }
+        .form-control::placeholder {
+            color: rgba(0,0,0,0.4);
+        }
+        .form-label {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .form-group:focus-within .form-label {
+            color: var(--primary-violet);
+        }
+        .contact-info-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            height: 100%;
+        }
+        .iframe-container {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: invert(90%) hue-rotate(180deg); /* Dark mode map trick */
+        }
+        .success-msg {
+            display: none;
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid #28a745;
+            color: #28a745;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader-placeholder"></div>
+
+    <div id="navbar-placeholder"></div>
+    <div class="bg-blob blob-1"></div>
+    
+    <section class="inner-hero">
+        <div class="container" data-aos="fade-up">
+            <h1 class="fw-bold mb-3">We'd Love To<br><span class="text-gradient">Hear From You</span></h1>
+            <p class="fs-5 mx-auto" style="max-width: 600px;">Our team is here to answer your questions and discuss how STACKLY can help your business.</p>
+        </div>
+    </section>
+
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="row g-5">
+                
+                <!-- Contact Info -->
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="contact-info-card">
+                        <h3 class="fw-bold mb-4">Contact Information</h3>
+                        <p class="mb-5">Fill out the form and our team will get back to you within 24 hours.</p>
+                        
+                        <div class="d-flex align-items-center gap-4 mb-4">
+                            <div class="bg-glass p-3 rounded-circle text-primary-violet fs-4">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email</h6>
+                                <p class="mb-0 text-muted">hello@stackly.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center gap-4 mb-4">
+                            <div class="bg-glass p-3 rounded-circle text-primary-violet fs-4">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div>
+                                  <h6 class="fw-bold mb-1">Phone</h6>
+                                  <p class="mb-0 text-muted">+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center gap-4 mb-5">
+                            <div class="bg-glass p-3 rounded-circle text-primary-violet fs-4">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                  <h6 class="fw-bold mb-1">Office Address</h6>
+                                  <p class="mb-0 text-muted">MMR Complex, Periyakollappatty<br>Chinna Thirupathi, Salem, TN 636008</p>
+                            </div>
+                        </div>
+                        
+                        <h6 class="fw-bold mb-3">Follow Us</h6>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="bg-glass p-2 rounded-circle text-dark hover-glow magnetic"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="bg-glass p-2 rounded-circle text-dark hover-glow magnetic"><i class="bi bi-twitter-x"></i></a>
+                            <a href="#" class="bg-glass p-2 rounded-circle text-dark hover-glow magnetic"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="bg-glass p-5 rounded-4 border border-secondary h-100">
+                        <form id="contactForm">
+                            <div class="row g-4">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control shadow-none" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control shadow-none" placeholder="john@company.com" required>
+                                </div>
+                                  <div class="col-md-6 form-group">
+                                      <label class="form-label">Phone Number</label>
+                                      <input type="tel" class="form-control shadow-none" placeholder="+91 98765 00000">
+                                  </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Subject</label>
+                                    <select class="form-control shadow-none" required style="cursor: pointer;">
+                                        <option value="" disabled selected>Select a topic</option>
+                                        <option value="sales">Sales Inquiry</option>
+                                        <option value="support">Technical Support</option>
+                                        <option value="partnership">Partnership</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control shadow-none" rows="5" placeholder="How can we help you?" required></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-premium w-100 justify-content-center border-0 magnetic py-3">Send Message</button>
+                                </div>
+                            </div>
+                            <div class="success-msg" id="successMsg">
+                                <i class="bi bi-check-circle-fill me-2"></i> Your message has been sent successfully! We will contact you soon.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Map Section -->
+            <div class="row mt-5 pt-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="iframe-container rounded-4 shadow-sm overflow-hidden" id="map-container" style="height: 450px; width: 100%;">
+                        <iframe src="https://maps.google.com/maps?q=Stackly,%20MMR%20Complex,%20Periyakollappatty,%20Chinna%20Thirupathi,%20Salem,%20Tamil%20Nadu%20636008,%20India&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Form Animation & Validation
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('successMsg');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Animate button
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending...';
+                
+                setTimeout(() => {
+                    window.location.href = '404.html';
+                }, 1500);
+            });
+
+            // Map Iframe scroll animation
+            gsap.fromTo('#map-container', 
+                { opacity: 0, scale: 0.94, y: 60, boxShadow: '0 0 0 rgba(31, 224, 182, 0)' },
+                { 
+                    opacity: 1, scale: 1, y: 0, 
+                    boxShadow: '0 0 30px rgba(31, 224, 182, 0.2)',
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: '#map-container',
+                        start: 'top 85%'
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<nav class="navbar navbar-expand-lg fixed-top mt-3" id="main-navbar">
+    <div class="container navbar-pill">
+        <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="home.html">
+            <img src="assets/images/logo-green.webp" alt="STACKLY Logo" height="32" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list text-white fs-1"></i>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 hover-target" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 hover-target" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 hover-target" href="service.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 hover-target" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 hover-target" href="contact.html">Contact</a>
+                </li>
+            </ul>
+            <div class="d-flex gap-4 align-items-center">
+                <a href="login.html" class="nav-link text-white fw-medium">Login</a>
+                <a href="signup.html" class="btn-cyan rounded-pill text-dark fw-bold px-4 py-2 text-decoration-none">Get Started</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<style>
+/* Navbar Specific Styles */
+#main-navbar {
+    padding: 0;
+    transition: var(--transition-smooth);
+    background: transparent;
+}
+
+.navbar-pill {
+    background: rgba(17, 22, 34, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 10px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#main-navbar.navbar-scrolled .navbar-pill {
+    background: rgba(17, 22, 34, 0.95);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tracking-wide {
+    letter-spacing: 0.5px;
+}
+.brand-dot {
+    color: #1fe0b6;
+    font-size: 1.2rem;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 8px 12px !important;
+    position: relative;
+}
+
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+.active-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background-color: #1fe0b6;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.btn-cyan {
+    background-color: #1fe0b6;
+    color: #111622;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(31, 224, 182, 0.2);
+}
+
+.btn-cyan:hover {
+    background-color: #1bc39f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(31, 224, 182, 0.4);
+    color: #111622;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+    .navbar-pill {
+        border-radius: 50px;
+        padding: 10px 20px;
+        position: relative;
+    }
+    .navbar-collapse, .navbar-collapse.collapsing {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(17, 22, 34, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: none;
+        border-radius: 0;
+        padding: 120px 20px 40px;
+        margin-top: 0;
+        z-index: -1;
+        box-shadow: none;
+        overflow-y: auto;
+        overscroll-behavior: none;
+    }
+    .navbar-collapse.show, .navbar-collapse.collapsing {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .navbar-nav {
+        gap: 15px !important;
+        text-align: center;
+    }
+    .active-link::after {
+        width: 30px;
+        bottom: 0;
+    }
+    .d-flex.gap-4 {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 25px;
+        gap: 15px !important;
+    }
+    .btn-cyan {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
