@@ -322,7 +322,7 @@
 <body>
     <div class="container-auth right-panel-active" id="container">
         <div class="form-container sign-up-container">
-            <form onsubmit="event.preventDefault(); localStorage.setItem('stacklyUserEmail', this.email.value); localStorage.setItem('stacklyUserName', this.name.value); window.location.href = 'login.html';">
+            <form onsubmit="event.preventDefault(); if(this.password.value !== this.confirm_password.value) { alert('Passwords do not match!'); return; } localStorage.setItem('stacklyUserEmail', this.email.value); localStorage.setItem('stacklyUserName', this.name.value); window.location.href = 'login.html';">
                 <img src="assets/images/logo-green.webp" alt="Stackly Logo" style="width: 120px; margin-bottom: 15px;">
                 <h1>Create Account</h1>
                 <select name="role" required style="margin-top: 15px;">
@@ -332,7 +332,8 @@
                 </select>
                 <input type="text" name="name" placeholder="Name" required />
                 <input type="email" name="email" placeholder="Email" required />
-                <input type="password" placeholder="Password" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required />
                 <button type="submit">Sign Up</button>
                 <div class="mobile-toggle-auth" id="mobileSignIn">Already have an account? Sign In</div>
                 <div class="social-container" style="margin-top: 25px;">
